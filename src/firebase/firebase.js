@@ -24,18 +24,20 @@ export const signInWithGoogle = () => {
 
 export const createCurrentUser = async (data) => {
     if(!data) return;
-    const userRef = await firebase.firestore().doc(`users/${data.uid}`);
+    console.log(data)
+    const userRef = await firebase.firestore().doc(`users/${data.user.uid}`);
     const userSnapShotData = await userRef.get();
-
+    console.log(userSnapShotData)
     if(!userSnapShotData.exists) {
         const userData = {
             name: data.user.displayName,
             email: data.user.email
         }
+        console.log(userData)
         await userRef.set(userData)
     }
 
-    return console.log("User is already exist !")
+    return console.log(data.uid,"User is already exist !")
 }
 
 export const addContactToFirestore = async (id,data) => {
