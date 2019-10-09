@@ -12,10 +12,9 @@
     .input-field {
         display: block;
         width: 100%;
-        max-width: 80%;
         border: none;
         background: #1bbbf9;
-        padding: 10px 14px;
+        padding: 12px 14px;
         border-radius: 20px;
         font-size: 16px;
         letter-spacing: 1px;
@@ -30,7 +29,7 @@
     }
 }
 
-.btn {
+.btn-contact {
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
@@ -39,4 +38,32 @@
     outline: none;
     display: block;
     cursor: pointer;
+}
+
+@media (max-width:500px) {
+    #add-contact {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media (max-width:950px) {
+    #add-contact {
+        margin-bottom: 20px;
+        padding:0 !important;
+        width: 400px;
+        margin: 0 auto;
+    }
+    .input-field {
+        width: 100%;
+    }
+    .btn-contact {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #add-contact {
+        padding-right: 20px;
+    }
 }

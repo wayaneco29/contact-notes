@@ -64,10 +64,10 @@ const AddContact = ({user, getContacts}) => {
                     </div>
                     {
                         loading ? 
-                        (<button className="btn" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        (<button className="btn-contact" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <Spinner /> ADDING
                     </button>) :
-                        (<button className="btn" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} type="submit" disabled={user ? false : true}> ADD CONTACT</button>)
+                        (<button className="btn-contact" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} type="submit" disabled={user ? false : true}> ADD CONTACT</button>)
                         
                     }
                 </form>

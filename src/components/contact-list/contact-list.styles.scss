@@ -38,3 +38,13 @@
         }
     }
 }
+
+@media (max-width: 629px) {
+    .container-fluid {
+        overflow-y: auto;
+
+        .contact-inner {
+            width: 600px;
+        }
+    }
+}

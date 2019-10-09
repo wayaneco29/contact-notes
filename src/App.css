@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+
+
+@media (max-width: 950px) {
+  .app-inner {
+    flex-direction: column;
+  }
+
+  .app-side-2 {
+    overflow-x: hidden;
+  }
+}

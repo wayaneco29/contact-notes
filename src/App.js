@@ -35,11 +35,11 @@ const App = ({currentUser}) => {
     <div className="App">
       <Navigation />
       <div className="container">
-        <div style={styles.appInner}>
-          <div style={styles.side1}>
+        <div style={styles.appInner} className="app-inner">
+          <div style={styles.side1} className="app-side-1">
             <AddContact />
           </div>
-          <div style={styles.side2}>
+          <div style={styles.side2} className="app-side-2">
             <ContactList />
           </div>
         </div>

@@ -24,40 +24,45 @@ export const signInWithGoogle = () => {
 
 export const createCurrentUser = async (data) => {
     if(!data) return;
-    console.log(data)
+
     const userRef = await firebase.firestore().doc(`users/${data.user.uid}`);
-    const userSnapShotData = await userRef.get();
-    console.log(userSnapShotData)
+    const userSnapShotData = await userRef.orderBy("createdAt", "desc").get();
     if(!userSnapShotData.exists) {
         const userData = {
             name: data.user.displayName,
             email: data.user.email
         }
-        console.log(userData)
         await userRef.set(userData)
     }
 
-    return console.log(data.uid,"User is already exist !")
+    return;
 }
 
 export const addContactToFirestore = async (id,data) => {
     try {
         const dataRef = await firebase.firestore().collection(`users/${id}/contacts/`);
         const collection = await dataRef.get();
-        await dataRef.add(data)
+        const collectionToAdd = {
+            createdAt: new Date(),
+            ...data
+        }
+        await dataRef.add(collectionToAdd)
     } catch(e) {
-        console.log(e)
+        
     }
 }
 
 export const getAllContacts = async (id) => {
     const contactsRef = await firebase.firestore().collection(`users/${id}/contacts`);
     const collectionRef = await contactsRef.get();
-
     const arr = [];
 
     collectionRef.docs.map(async data => {
-        arr.push(data.data())
+        const contact = {
+            id: data.id,
+            ...data.data()
+        }
+        arr.push(contact)
     })
 
     return await arr;
