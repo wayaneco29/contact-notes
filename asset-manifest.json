@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/contact-notes/static/css/main.31c839d2.chunk.css",
+    "main.js": "/contact-notes/static/js/main.6ad4a75b.chunk.js",
+    "main.js.map": "/contact-notes/static/js/main.6ad4a75b.chunk.js.map",
+    "runtime-main.js": "/contact-notes/static/js/runtime-main.d0fbdead.js",
+    "runtime-main.js.map": "/contact-notes/static/js/runtime-main.d0fbdead.js.map",
+    "static/js/2.e0be1d81.chunk.js": "/contact-notes/static/js/2.e0be1d81.chunk.js",
+    "static/js/2.e0be1d81.chunk.js.map": "/contact-notes/static/js/2.e0be1d81.chunk.js.map",
+    "index.html": "/contact-notes/index.html",
+    "precache-manifest.01278950ab6cacecdfcb836d2fa991a5.js": "/contact-notes/precache-manifest.01278950ab6cacecdfcb836d2fa991a5.js",
+    "service-worker.js": "/contact-notes/service-worker.js",
+    "static/css/main.31c839d2.chunk.css.map": "/contact-notes/static/css/main.31c839d2.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d0fbdead.js",
+    "static/js/2.e0be1d81.chunk.js",
+    "static/css/main.31c839d2.chunk.css",
+    "static/js/main.6ad4a75b.chunk.js"
+  ]
+}
