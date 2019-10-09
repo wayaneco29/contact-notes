@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+
+import firebase, {createCurrentUser} from './firebase/firebase';
+import {currentUser} from './redux/actions/user-auth/UserAuth.actions';
+
+import Navigation from './components/navigation/Navigation.component';
+import AddContact from './components/add-contact/AddContact.component';
+import ContactList from './components/contact-list/ContactList.component';
+
 import './App.css';
 
-function App() {
+const styles = {
+  appInner: {
+    display: 'flex',
+    padding: '40px 0px'
+  },
+  side1: {
+    flex: 1
+  },
+  side2: {
+    flex: 2
+  }
+}
+
+const App = ({currentUser}) => {
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(async(user) => {
+      if(!user) currentUser(null);
+      currentUser(user)
+    })
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation />
+      <div className="container">
+        <div style={styles.appInner}>
+          <div style={styles.side1}>
+            <AddContact />
+          </div>
+          <div style={styles.side2}>
+            <ContactList />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.user.user
+})
+
+const mapDispatchToProps = dispatch => ({
+  currentUser: (user) => dispatch(currentUser(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

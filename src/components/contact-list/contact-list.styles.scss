@@ -1,0 +1,40 @@
+.contact-headers {
+    display: flex;
+
+    .headers {
+        padding: 10px;
+        border-bottom: 1px solid #0000007a;
+        text-align: start;
+        font-weight: 600;
+        font-size: 16px;
+
+        &.headers-email {
+            flex: 0 1 40%;
+        }
+        
+        &.headers-name,
+        &.headers-contact {
+            flex: 0 1 30%;
+        }
+    }
+}
+
+.contact-content {
+    display: flex;
+
+    .content {
+        margin-top: 8px;
+        padding: 10px;
+        border-bottom: 1px solid #00000040;
+        text-align: start;
+
+        &.content-email {
+            flex: 0 1 40%;
+        }
+        
+        &.content-name,
+        &.content-contact {
+            flex: 0 1 30%;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+        text-align: left;
+        margin-bottom: 4px;
+        width: fit-content;
+    }
+
+    .input-field {
+        display: block;
+        width: 100%;
+        max-width: 80%;
+        border: none;
+        background: #1bbbf9;
+        padding: 10px 14px;
+        border-radius: 20px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        outline: none;
+        color: #ffecec;
+
+        &::placeholder {
+            color: #ffecec;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+    }
+}
+
+.btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: #1bbbf9;
+    color: #ffecec;
+    outline: none;
+    display: block;
+    cursor: pointer;
+}
