@@ -38,19 +38,25 @@ const AddContact = ({user, getContacts}) => {
                 <p className="contact-header">Create Contact here... </p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        {errors.email ? <label htmlFor="#email">&#x2BBE;</label> : null}
-                        <input type="text" onChange={handleChange} name="email" id="email" className="input-field" placeholder="Enter Email ..." disabled={user ? false : true} ref={register({
+                        {errors.email ? <label htmlFor="#email">&times;</label> : null}
+                        <input type="text" onChange={handleChange} name="email" id="email" className="input-field" placeholder="Enter Email ..." 
+                            style={{border: errors.email ? "1px solid red" : ""}}
+                            disabled={user ? false : true} ref={register({
                             required: true,
                             pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
                             })}/>
                     </div>
                     <div className="form-group">
-                        {errors.name ? <label htmlFor="#name">&#x2BBE;</label> : null}
-                        <input type="text" onChange={handleChange} name="name" id="name" className="input-field"  placeholder="Enter Name ..." disabled={user ? false : true} ref={register({required: true})}/>
+                        {errors.name ? <label htmlFor="#name">&times;</label> : null}
+                        <input type="text" onChange={handleChange} name="name" id="name" className="input-field"  placeholder="Enter Name ..." 
+                            style={{border: errors.name ? "1px solid red" : ""}}
+                            disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     <div className="form-group">
-                        {errors.contact ? <label htmlFor="#phone">&#x2BBE;</label> :null}
-                        <input type="text" onChange={handleChange} name="contact" id="contact" className="input-field" placeholder="Enter Contact ...." disabled={user ? false : true} ref={register({required: true})}/>
+                        {errors.contact ? <label htmlFor="#phone">&times;</label> :null}
+                        <input type="text" onChange={handleChange} name="contact" id="contact" className="input-field" placeholder="Enter Contact ...." 
+                        style={{border: errors.contact ? "1px solid red" : ""}}
+                        disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     {
                         loading ? 

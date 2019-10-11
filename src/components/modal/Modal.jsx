@@ -45,19 +45,19 @@ const Modal = ({selectedValue, dispatch,userId,getContacts, closeModal}) => {
                     <div className="modal-content">
                         <form onSubmit={handleSubmit(toSubmit)}>
                             <div className="form-group">
-                                {errors.email ? <label htmlFor="#email">&#x2BBE;</label> : null}
-                                <input type="text" name="email" onChange={handleChange} id="email" style={{border: errors.email ? "1px solid red" : null}} className="input-field" placeholder="Enter Email ..." defaultValue={selectedValue.email} ref={register({
+                                {errors.email ? <label htmlFor="#email">&times;</label> : null}
+                                <input type="text" style={{border: errors.email ? "1px solid red" : ""}} name="email" onChange={handleChange} id="email" style={{border: errors.email ? "1px solid red" : null}} className="input-field" placeholder="Enter Email ..." defaultValue={selectedValue.email} ref={register({
                                     required: true,
                                     pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
                                     })}/>
                             </div>
                             <div className="form-group">
-                                {errors.name ? <label htmlFor="#email">&#x2BBE;</label> : null}
-                                <input type="text" name="name" style={{border: errors.name ? "1px solid red" : null}} onChange={handleChange} id="name" className="input-field"  placeholder="Enter Name ..." defaultValue={selectedValue.name} ref={register({required: true})}/>
+                                {errors.name ? <label htmlFor="#email">&times;</label> : null}
+                                <input type="text" style={{border: errors.name ? "1px solid red" : ""}} name="name" style={{border: errors.name ? "1px solid red" : null}} onChange={handleChange} id="name" className="input-field"  placeholder="Enter Name ..." defaultValue={selectedValue.name} ref={register({required: true})}/>
                             </div>
                             <div className="form-group">
-                                {errors.contact ? <label htmlFor="#email">&#x2BBE;</label> : null}
-                                <input type="text" name="contact" style={{border: errors.contact ? "1px solid red" : null}} onChange={handleChange} id="contact" className="input-field" placeholder="Enter Contact ...." defaultValue={selectedValue.contact} ref={register({required: true})}/>
+                                {errors.contact ? <label htmlFor="#email">&times;</label> : null}
+                                <input type="text" style={{border: errors.contact ? "1px solid red" : ""}} name="contact" style={{border: errors.contact ? "1px solid red" : null}} onChange={handleChange} id="contact" className="input-field" placeholder="Enter Contact ...." defaultValue={selectedValue.contact} ref={register({required: true})}/>
                             </div> 
                             <div className="modal-actions">
                                 <button className="modal-btn-actions" type="btn" onClick={() => closeModal()}>CANCEL</button>
