@@ -33,3 +33,9 @@ code {
   height: 100%;
   position: relative;
 }
+
+@media (max-width: 500px) {
+  .container {
+    width: 95%;
+  }
+}

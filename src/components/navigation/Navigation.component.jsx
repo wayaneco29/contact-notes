@@ -22,7 +22,7 @@ const Navigation = ({user, getContacts}) => {
         <nav id="nav">
             <div className="container">
                 <div className="nav-inner">
-                    <div className="nav-logo">Save Contact App</div>
+                    <div className="nav-logo">Contact App</div>
                     {
                         user ? 
                         (<button className="btn" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={signOut}>{loading ? <Spinner /> : null} SIGN OUT</button>)

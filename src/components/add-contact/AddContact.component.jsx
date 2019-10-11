@@ -35,6 +35,7 @@ const AddContact = ({user, getContacts}) => {
     return (
         <div id="add-contact">
             <div className="container-fluid">
+                <p className="contact-header">Create Contact here... </p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         {errors.email ? <label htmlFor="#email">&#x2BBE;</label> : null}

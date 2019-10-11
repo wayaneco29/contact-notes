@@ -54,4 +54,10 @@
     outline: none;
     display: block;
     cursor: pointer;
+
+    &:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

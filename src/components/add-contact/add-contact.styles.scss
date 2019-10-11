@@ -2,6 +2,14 @@
     padding-right: 20px !important;
 }
 
+.contact-header {
+    padding-bottom: 20px;
+    font-size: 26px;
+    text-align: left;
+    text-decoration: dotted;
+    font-weight: 600;
+}
+
 .form-group {
     position: relative;
     margin-bottom: 20px;
@@ -60,6 +68,9 @@
 }
 
 @media (max-width:950px) {
+    .contact-header {
+        text-align: center;
+    }
     #add-contact {
         margin-bottom: 20px;
         padding:0 !important;

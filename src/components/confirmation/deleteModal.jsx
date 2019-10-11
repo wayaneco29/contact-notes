@@ -1,6 +1,8 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
 
+import Spinner from '../spinner/spinner';
+
 import { closeDeleteModal,getContacts } from '../../redux/actions/contact/Contact.actions';
 import {deleteContacts,getAllContacts} from '../../firebase/firebase';
 
@@ -30,7 +32,7 @@ const ConfirmDelete = ({getContacts, userId, closeDeleteModal, contactId}) => {
                     </div>
                     <div className="delete-actions">
                         <button className="delete-btn" onClick={() => closeDeleteModal()}>Cancel</button>
-                        <button className="delete-btn" onClick={deleteContact}>Yes</button>
+                        <button className="delete-btn" onClick={deleteContact}>{loading ? <Spinner size={15} color="#3c4245"/> : null}Yes</button>
                     </div>
                 </div>
             </div>
