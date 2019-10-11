@@ -48,11 +48,23 @@
     cursor: pointer;
     align-items: center;
     width: 48%;
+    transition: background 400ms ease,
+                color 400ms ease;
+
+    &:hover {
+        color: #eee;
+        background: #3c4245;
+        border: 1px solid #eee;
+    }
 
     &:last-child {
         background: #3c4245;
         color: #eee;
         border: 1px solid #eeee;
+
+        &:hover {
+            background: #292c2d;
+        }
     }
 }
 

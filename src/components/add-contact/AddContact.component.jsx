@@ -11,7 +11,6 @@ import './add-contact.styles.scss';
 
 const AddContact = ({user, getContacts}) => {
     const { register, handleSubmit,errors, reset} = useForm();
-    const [res, setRes] = React.useState(false);
     const [values, setValues] = React.useState({
         email: '',
         name:'',
@@ -60,10 +59,21 @@ const AddContact = ({user, getContacts}) => {
                     </div>
                     {
                         loading ? 
-                        (<button className="btn-contact" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <Spinner size={15}/> ADDING...
-                    </button>) :
-                        (<button className="btn-contact" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} type="submit" disabled={user ? false : true}> ADD CONTACT</button>)
+                        (
+                        <button className="btn-contact">
+                            <Spinner size={15}/> ADDING...
+                        </button>
+                        )
+                         :
+                        (
+                        <button 
+                            className="btn-contact" 
+                            style={{ background: user ? "" : "#c1c0bd", color: user ? "" : "#0006", cursor: user ? "" : "auto"}} 
+                            type="submit" 
+                            disabled={user ? false : true}>
+                            {user ? "ADD CONTACT" : " DISABLED"}
+                        </button>
+                        )
                         
                     }
                 </form>

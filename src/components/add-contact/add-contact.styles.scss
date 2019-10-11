@@ -48,8 +48,15 @@
     background: #3c4245;
     color: #ffecec;
     outline: none;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 400ms ease;
     cursor: pointer;
+
+    &:hover {
+        background: #313538;
+    }
 }
 
 @media (max-width:500px) {

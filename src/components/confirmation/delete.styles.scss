@@ -48,16 +48,32 @@
 .delete-btn {
     border: none;
     width: 48%;
-    padding: 13px 28px;
+    padding: 12px 28px;
     border-radius: 20px;
     color: #3c4245;
     outline: none;
+    transition: background 400ms ease,
+                color 400ms ease;
     display: block;
     cursor: pointer;
+
+    &:hover {
+        color: #eee;
+        background: #3c4245;
+        border: 1px solid #eee;
+    }
+
 
     &:last-child {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: #3c4245;
+        border: 1px solid #eee;
+        color: #eee;
+
+        &:hover {
+            background: #2a2f31;
+        }
     }
 }
