@@ -1,3 +1,7 @@
+#contact-list {
+    padding: 0px 20px;
+}
+
 .contact-headers {
     display: flex;
 
@@ -12,9 +16,14 @@
             flex: 0 1 40%;
         }
         
-        &.headers-name,
-        &.headers-contact {
+        &.headers-name {
             flex: 0 1 30%;
+        }
+        &.headers-contact {
+            flex: 0 1 20%;
+        }
+        &.header-actions {
+            flex: 0 1 10%;
         }
     }
 }
@@ -32,9 +41,28 @@
             flex: 0 1 40%;
         }
         
-        &.content-name,
-        &.content-contact {
+        &.content-name {
             flex: 0 1 30%;
+        }
+        &.content-contact {
+            flex: 0 1 20%;
+        }
+        &.content-actions {
+            flex: 0 1 10%;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+
+            .action-icons {
+                font-size: 20px;
+                color: #000;
+                cursor: pointer;
+
+                &:last-child {
+                    font-weight: 600;
+                }
+            }
         }
     }
 }
@@ -44,7 +72,7 @@
         overflow-y: auto;
 
         .contact-inner {
-            width: 600px;
+            width: 750px;
         }
     }
 }

@@ -2,11 +2,11 @@ import React,{ useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getAllContacts} from '../../firebase/firebase';
 
-import {getContacts} from '../../redux/actions/contact/Contact.actions';
+import {getContacts,selectOneContact, openDeleteModal} from '../../redux/actions/contact/Contact.actions';
 
 import './contact-list.styles.scss';
 
-const ContactList = ({user,contacts, getContacts}) => {
+const ContactList = ({user,contacts, getContacts, selectOneContact, openDeleteModal}) => {
 
     const sample = async() => {
         if(user) {
@@ -20,6 +20,11 @@ const ContactList = ({user,contacts, getContacts}) => {
         sample()
     }, [user])
 
+    const selectData = (item) => {
+        console.log(item)
+        selectOneContact(item)
+    }
+
     return (
         <div id="contact-list">
             <div className="container-fluid">
@@ -28,6 +33,7 @@ const ContactList = ({user,contacts, getContacts}) => {
                         <p className="headers headers-email">Email</p>
                         <p className="headers headers-name">Name</p>
                         <p className="headers headers-contact">Contact</p>
+                        <p className="headers headers-actions">Actions</p>
                     </div>
                     {
                         contacts && contacts.length > 0 ? 
@@ -36,6 +42,7 @@ const ContactList = ({user,contacts, getContacts}) => {
                                 <p className="content content-email">{value.email}</p>
                                 <p className="content content-name">{value.name}</p>
                                 <p className="content content-contact">{value.contact}</p>
+                                <p className="content content-actions"><span className="action-icons" onClick={() => selectOneContact(value)}>&#9998;</span> <span className="action-icons" onClick={() => openDeleteModal(value.id)}>&#128465;</span></p>
                             </div>
                         ))
                         : 
@@ -55,7 +62,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getContacts: (data) => dispatch(getContacts(data))
+    getContacts: (data) => dispatch(getContacts(data)),
+    selectOneContact: data => dispatch(selectOneContact(data)),
+    openDeleteModal: (id) => dispatch(openDeleteModal(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

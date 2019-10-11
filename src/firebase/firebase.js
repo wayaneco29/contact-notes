@@ -10,9 +10,9 @@ firebase.initializeApp(firebaseConfig);
 // =============================================== CODE HERE ================================================= //
 // =========================================================================================================== //
 
-/* GOOGLE SIGN IN */
-
-
+// =========================================================================================================== //
+// =================================== GOOGLE SIGN IN========================================================= //
+// =========================================================================================================== //
 export const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
@@ -22,11 +22,16 @@ export const signInWithGoogle = () => {
         .catch((error) => console.log(error))
 }
 
+// =========================================================================================================== //
+// ======================================= CHECK IF USER EXISTS ============================================== //
+// =========================================================================================================== //
+
 export const createCurrentUser = async (data) => {
     if(!data) return;
 
     const userRef = await firebase.firestore().doc(`users/${data.user.uid}`);
-    const userSnapShotData = await userRef.orderBy("createdAt", "desc").get();
+    const userSnapShotData = await userRef.get();
+    console.log(userSnapShotData)
     if(!userSnapShotData.exists) {
         const userData = {
             name: data.user.displayName,
@@ -37,6 +42,10 @@ export const createCurrentUser = async (data) => {
 
     return;
 }
+
+// =========================================================================================================== //
+// ====================================== ADD CONTACT TO STORE =============================================== //
+// =========================================================================================================== //
 
 export const addContactToFirestore = async (id,data) => {
     try {
@@ -52,9 +61,13 @@ export const addContactToFirestore = async (id,data) => {
     }
 }
 
+// =========================================================================================================== //
+// =============================== GET ALL CONTACTS ========================================================== //
+// =========================================================================================================== //
+
 export const getAllContacts = async (id) => {
     const contactsRef = await firebase.firestore().collection(`users/${id}/contacts`);
-    const collectionRef = await contactsRef.get();
+    const collectionRef = await contactsRef.orderBy("createdAt", "desc").get();
     const arr = [];
 
     collectionRef.docs.map(async data => {
@@ -66,6 +79,32 @@ export const getAllContacts = async (id) => {
     })
 
     return await arr;
+}
+
+// =========================================================================================================== //
+// ========================================= UPDATE THE CONTACTS ============================================= //
+// =========================================================================================================== //
+
+export const updateContacts = async (userId, contactId, data) => {
+    try {
+        const updateContactRef = await firebase.firestore().doc(`users/${userId}/contacts/${contactId}`);
+        await updateContactRef.update(data)
+    } catch(e) {
+        throw(e)
+    }
+}
+
+// =========================================================================================================== //
+// ========================================= DELETE CONTACTS ================================================= //
+// =========================================================================================================== //
+
+export const deleteContacts = async (userId, contactId) => {
+    try {
+        const deleteContactRef = await firebase.firestore().doc(`users/${userId}/contacts/${contactId}`);
+        await deleteContactRef.delete()
+    } catch(e) {
+        throw(e)
+    }
 }
 
 export default firebase;

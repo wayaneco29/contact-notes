@@ -1,28 +1,31 @@
+#add-contact {
+    padding-right: 20px !important;
+}
+
 .form-group {
     position: relative;
     margin-bottom: 20px;
 
     label {
-        display: block;
-        text-align: left;
-        margin-bottom: 4px;
-        width: fit-content;
+        position: absolute;
+        font-size: 30px;
+        color: red;
+        right: 13px;
     }
 
     .input-field {
         display: block;
         width: 100%;
-        border: none;
-        background: #1bbbf9;
+        border: 1px solid #3c4245;
         padding: 12px 14px;
         border-radius: 20px;
         font-size: 16px;
         letter-spacing: 1px;
         outline: none;
-        color: #ffecec;
+        color: #3c4245;
 
         &::placeholder {
-            color: #ffecec;
+            color: #3c4245;
             letter-spacing: 3px;
             font-size: 14px;
         }
@@ -31,9 +34,9 @@
 
 .btn-contact {
     border: none;
-    padding: 10px 20px;
+    padding: 13px 28px;
     border-radius: 20px;
-    background: #1bbbf9;
+    background: #3c4245;
     color: #ffecec;
     outline: none;
     display: block;
@@ -44,6 +47,15 @@
     #add-contact {
         width: 100% !important;
         margin-bottom: 20px !important;
+
+        .input-field {
+            padding: 10px 16px;
+        }
+
+        .btn-contact {
+            margin-top: 26px;
+            padding: 11px 22px;
+        }
     }
 }
 
@@ -57,13 +69,10 @@
     .input-field {
         width: 100%;
     }
-    .btn-contact {
-        width: 100%;
-    }
 }
 
-@media (max-width: 1024px) {
+@media only screen and (max-width: 2074px) {
     #add-contact {
-        padding-right: 20px;
+        padding-right: 20px !important;
     }
 }

@@ -21,13 +21,37 @@
   color: #09d3ac;
 }
 
+.app-side-1 {
+  padding: 40px 0px;
+}
+
+.app-side-2 {
+  flex: 2 1 0%;
+  padding: 40px 0;
+  min-height: calc(100vh - 100px);
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+}
 
 @media (max-width: 950px) {
   .app-inner {
     flex-direction: column;
   }
+  .app-container {
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.4);
+    padding: 0px 10px;
+    width: 90%;
+  }
 
   .app-side-2 {
     overflow-x: hidden;
+  }
+}
+
+@media (max-width: 950px) {
+  .app-side-1 {
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+  }
+  .app-side-2 {
+    box-shadow: none !important;
   }
 }

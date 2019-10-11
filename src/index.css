@@ -26,3 +26,10 @@ code {
   height: 100%;
   position: relative;
 }
+
+.app-container {
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}

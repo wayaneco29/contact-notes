@@ -7,13 +7,15 @@ import {currentUser} from './redux/actions/user-auth/UserAuth.actions';
 import Navigation from './components/navigation/Navigation.component';
 import AddContact from './components/add-contact/AddContact.component';
 import ContactList from './components/contact-list/ContactList.component';
+import Footer from './components/footer/Footer';
+import Modal from './components/modal/Modal';
+import ConfirmDelete from './components/confirmation/deleteModal';
 
 import './App.css';
 
 const styles = {
   appInner: {
     display: 'flex',
-    padding: '40px 0px'
   },
   side1: {
     flex: 1
@@ -23,7 +25,7 @@ const styles = {
   }
 }
 
-const App = ({currentUser}) => {
+const App = ({currentUser, isModal, isDeleteModal}) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async(user) => {
       if(!user) currentUser(null);
@@ -33,8 +35,10 @@ const App = ({currentUser}) => {
 
   return (
     <div className="App">
+      {isModal ? < Modal /> : null}
+      {isDeleteModal ? <ConfirmDelete /> : null}
       <Navigation />
-      <div className="container">
+      <div className="app-container">
         <div style={styles.appInner} className="app-inner">
           <div style={styles.side1} className="app-side-1">
             <AddContact />
@@ -44,12 +48,16 @@ const App = ({currentUser}) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  user: state.user.user
+  user: state.user.user,
+  isModal: state.contact.openModal,
+  modalValue: state.contact.contactValue,
+  isDeleteModal: state.contact.openDeleteModal
 })
 
 const mapDispatchToProps = dispatch => ({
