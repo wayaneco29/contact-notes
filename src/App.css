@@ -53,5 +53,6 @@
   }
   .app-side-2 {
     box-shadow: none !important;
+    min-height: calc(300px);
   }
 }

@@ -43,15 +43,15 @@ const AddContact = ({user, getContacts}) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         {errors.email ? <label htmlFor="#email">&#x2BBE;</label> : null}
-                        <input type="text" onChange={handleChange} name="email" id="email" className="input-field" placeholder="Enter Email ..." value={values.email} disabled={user ? false : true} ref={register({required: true})}/>
+                        <input type="text" onChange={handleChange} name="email" id="email" className="input-field" placeholder="Enter Email ..." defaultValue={values.email} disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     <div className="form-group">
                         {errors.name ? <label htmlFor="#name">&#x2BBE;</label> : null}
-                        <input type="text" onChange={handleChange} name="name" id="name" className="input-field"  placeholder="Enter Name ..." value={values.name} disabled={user ? false : true} ref={register({required: true})}/>
+                        <input type="text" onChange={handleChange} name="name" id="name" className="input-field"  placeholder="Enter Name ..." defaultValue={values.name} disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     <div className="form-group">
                         {errors.contact ? <label htmlFor="#phone">&#x2BBE;</label> :null}
-                        <input type="text" onChange={handleChange} name="contact" id="contact" className="input-field" placeholder="Enter Contact ...." value={values.contact} disabled={user ? false : true} ref={register({required: true})}/>
+                        <input type="text" onChange={handleChange} name="contact" id="contact" className="input-field" placeholder="Enter Contact ...." defaultValue={values.contact} disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     {
                         loading ? 
