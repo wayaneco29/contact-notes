@@ -10,7 +10,8 @@ import Spinner from '../spinner/spinner';
 import './add-contact.styles.scss';
 
 const AddContact = ({user, getContacts}) => {
-    const { register, handleSubmit,errors} = useForm();
+    const { register, handleSubmit,errors, reset} = useForm();
+    const [res, setRes] = React.useState(false);
     const [values, setValues] = React.useState({
         email: '',
         name:'',
@@ -22,18 +23,12 @@ const AddContact = ({user, getContacts}) => {
         const {name, value} = e.target;
         setValues({...values, [name]: value})
     }
-
-    const validateEmail = (email) => {
-        const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(String(email).toLowerCase());
-    }
-
     const onSubmit = async (e) => {
         setLoading(true)
         await addContactToFirestore(user.uid, values)
         const data = await getAllContacts(user.uid)
         getContacts(data)
-        setValues({values, name: "", email: "", contact: ""})
+        reset()
         setLoading(false)
     }
 
@@ -43,15 +38,18 @@ const AddContact = ({user, getContacts}) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         {errors.email ? <label htmlFor="#email">&#x2BBE;</label> : null}
-                        <input type="text" onChange={handleChange} name="email" id="email" className="input-field" placeholder="Enter Email ..." defaultValue={values.email} disabled={user ? false : true} ref={register({required: true})}/>
+                        <input type="text" onChange={handleChange} name="email" id="email" className="input-field" placeholder="Enter Email ..." disabled={user ? false : true} ref={register({
+                            required: true,
+                            pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                            })}/>
                     </div>
                     <div className="form-group">
                         {errors.name ? <label htmlFor="#name">&#x2BBE;</label> : null}
-                        <input type="text" onChange={handleChange} name="name" id="name" className="input-field"  placeholder="Enter Name ..." defaultValue={values.name} disabled={user ? false : true} ref={register({required: true})}/>
+                        <input type="text" onChange={handleChange} name="name" id="name" className="input-field"  placeholder="Enter Name ..." disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     <div className="form-group">
                         {errors.contact ? <label htmlFor="#phone">&#x2BBE;</label> :null}
-                        <input type="text" onChange={handleChange} name="contact" id="contact" className="input-field" placeholder="Enter Contact ...." defaultValue={values.contact} disabled={user ? false : true} ref={register({required: true})}/>
+                        <input type="text" onChange={handleChange} name="contact" id="contact" className="input-field" placeholder="Enter Contact ...." disabled={user ? false : true} ref={register({required: true})}/>
                     </div>
                     {
                         loading ? 
