@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {getAllContacts} from '../../firebase/firebase';
 
 import {getContacts,selectOneContact, openDeleteModal} from '../../redux/actions/contact/Contact.actions';
-
 import './contact-list.styles.scss';
 
 const ContactList = ({user,contacts, getContacts, selectOneContact, openDeleteModal}) => {
