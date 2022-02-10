@@ -6,7 +6,7 @@
   "dependencies": {
     "firebase": "^7.1.0",
     "gh-pages": "^2.1.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-hook-form": "^3.23.18",
